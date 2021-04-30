@@ -13,13 +13,13 @@
 
 ### Pending features
 
-- [React Mobx](https://github.com/mobxjs/mobx-react)
-- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
-- Layout responsive
-- PWA as next-pwa
-- Adds theme dark
-- Build on Vercel
-- Acess api remote Glitch
+- [ ] [React Mobx](https://github.com/mobxjs/mobx-react)
+- [ ] [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
+- [ ] Layout responsive
+- [ ] PWA as next-pwa
+- [ ] Adds theme dark
+- [X] Build on Vercel
+- [X] Acess api remote Glitch
 
 ## :rocket: Development
 
