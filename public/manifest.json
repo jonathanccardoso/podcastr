@@ -1,0 +1,9 @@
+{
+  "name": "Podcastr",
+  "short_name": "podcastr",
+  "theme_color": "#8257e5",
+  "background_color": "#8257e5",
+  "display": "browser",
+  "scope": "",
+  "start_url": "/"
+}
