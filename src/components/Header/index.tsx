@@ -3,7 +3,11 @@ import ptBR from "date-fns/locale/pt-BR";
 
 import styles from "./styles.module.scss";
 
-export function Header() {
+type HeaderProps = {
+  themeToggler: () => void;
+};
+
+export function Header({ themeToggler }: HeaderProps) {
   const currentDate = format(new Date(), "EEEEEE, d MMMM", {
     locale: ptBR,
   });
@@ -15,6 +19,7 @@ export function Header() {
       <p>O melhor para você ouvir, sempre</p>
 
       <span>{currentDate}</span>
+      <button onClick={themeToggler}>Switch Theme</button>
     </header>
   );
 }

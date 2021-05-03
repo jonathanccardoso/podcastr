@@ -22,7 +22,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/contexts/PlayerContext.tsx"  ],
+, "src/contexts/PlayerContext.tsx", "src/styles/global.js"  ],
   "exclude": [
     "node_modules"
   ]
