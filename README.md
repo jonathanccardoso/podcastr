@@ -16,8 +16,9 @@
 - [X] PWA as next-pwa
 - [x] Build on Vercel
 - [x] Acess api remote Glitch
+- [X] Adds theme dark
 - [ ] Layout responsive
-- [ ] Adds theme dark
+- [ ] SWR
 
 ## :rocket: Development
 
