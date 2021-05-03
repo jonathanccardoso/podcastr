@@ -13,13 +13,11 @@
 
 ### Pending features
 
-- [ ] [React Mobx](https://github.com/mobxjs/mobx-react)
-- [ ] [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
+- [X] PWA as next-pwa
+- [x] Build on Vercel
+- [x] Acess api remote Glitch
 - [ ] Layout responsive
-- [ ] PWA as next-pwa
 - [ ] Adds theme dark
-- [X] Build on Vercel
-- [X] Acess api remote Glitch
 
 ## :rocket: Development
 
@@ -28,6 +26,14 @@
 ```console
 ❯ yarn server
 ```
+
+### Development
+
+Create .env.development and set baseurl local on api services.
+
+### Production
+
+Create .env.local and set baseurl extern on api services.
 
 ### Run project
 
