@@ -2,6 +2,12 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
+
+import FadeIn from "react-fade-in";
+import Lottie from "react-lottie";
+import ReactLoading from "react-loading";
+import "bootstrap/dist/css/bootstrap.css";
 
 import { format, parseISO } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
@@ -11,6 +17,7 @@ import { convertDurationToTimeString } from "../../utils/convertDurationToTimeSt
 
 import styles from "./episode.module.scss";
 import { usePlayer } from "../../contexts/PlayerContext";
+import { useFetch } from "../../hooks/useFetch";
 
 type Episode = {
   id: string;
@@ -28,14 +35,28 @@ type EpisodeProps = {
   episode: Episode;
 };
 
-export default function Episode({ episode }: EpisodeProps) {
+// export default function Episode({ episode }: EpisodeProps) {
+export default function Episode() {
   const { play } = usePlayer();
+
+  const router = useRouter();
+  const { slug } = router.query;
+
+  const { data } = useFetch<Episode>(`http://localhost:3333/episodes/${slug}`);
+
+  if (!data) {
+    return (
+      <div style={{ textAlign: "center" }}>
+        <ReactLoading type={"bars"} color={"black"} />
+      </div>
+    );
+  }
 
   return (
     <div className={styles.episode}>
       <Head>
-        <title>{episode.title} | Podcastr</title>
-        <meta name="description" content={episode.members} />
+        <title>{data.title} | Podcastr</title>
+        <meta name="description" content={data.members} />
       </Head>
       <div className={styles.thumbnailContainer}>
         <Link href="/">
@@ -46,13 +67,13 @@ export default function Episode({ episode }: EpisodeProps) {
         <Image
           width={700}
           height={160}
-          src={episode.thumbnail}
+          src={data.thumbnail}
           objectFit="cover"
         />
         <button
           type="button"
           onClick={() => {
-            play(episode);
+            play(data);
           }}
         >
           <img src="/play.svg" alt="Tocar episódio" />
@@ -60,15 +81,15 @@ export default function Episode({ episode }: EpisodeProps) {
       </div>
 
       <header>
-        <h1>{episode.title}</h1>
-        <span>{episode.members}</span>
-        <span>{episode.publishedAt}</span>
-        <span>{episode.durationAsString}</span>
+        <h1>{data.title}</h1>
+        <span>{data.members}</span>
+        <span>{data.publishedAt}</span>
+        <span>{data.durationAsString}</span>
       </header>
 
       <div
         className={styles.description}
-        dangerouslySetInnerHTML={{ __html: episode.description }}
+        dangerouslySetInnerHTML={{ __html: data.description }}
       />
     </div>
   );

@@ -12,6 +12,7 @@ import { api } from "../services/api";
 import { usePlayer } from "../contexts/PlayerContext";
 
 import styles from "./home.module.scss";
+import { useFetch } from "../hooks/useFetch";
 
 // define types with type or interface
 type Episode = {
@@ -34,6 +35,12 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
   const { playList } = usePlayer();
 
   const episodeList = [...latestEpisodes, ...allEpisodes];
+
+  const { data } = useFetch<Episode[]>("http://localhost:3333/episodes");
+  console.log("data", data);
+  if (!data) {
+    console.log("carregando data");
+  }
 
   return (
     <div className={styles.homePage}>
