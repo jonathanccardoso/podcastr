@@ -17,8 +17,8 @@
 - [x] Build on Vercel
 - [x] Acess api remote Glitch
 - [X] Adds theme dark
+- [X] SWR
 - [ ] Layout responsive
-- [ ] SWR
 
 ## :rocket: Development
 
